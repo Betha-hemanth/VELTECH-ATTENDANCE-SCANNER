@@ -24,10 +24,10 @@ import {
   Smartphone
 } from 'lucide-react';
 
-/**
- * GEMINI API UTILITIES
- */
-const apiKey = ""; // Provided by environment
+
+ 
+ 
+const apiKey = ""; 
 const MODEL_NAME = "gemini-2.5-flash-preview-09-2025";
 
 async function analyzeIDCard(base64Image) {
@@ -85,9 +85,9 @@ Be STRICT - only accept genuine Vel Tech University ID cards. Return ONLY JSON.`
   return JSON.parse(result.candidates[0].content.parts[0].text);
 }
 
-/**
- * UI COMPONENTS (SHADCN SHIMS)
- */
+
+ 
+ 
 
 const Card = ({ children, className = "" }) => (
   <div className={`bg-white rounded-xl overflow-hidden border border-slate-100 ${className}`}>
@@ -141,9 +141,9 @@ const Input = ({ value, onChange, placeholder, className = "", onKeyDown }) => (
   />
 );
 
-/**
- * UTILITIES
- */
+
+ 
+ 
 
 const OfflineStorage = {
   STORAGE_KEY: 'veltech_attendance_session',
@@ -164,9 +164,9 @@ const OfflineStorage = {
   clearSession: () => localStorage.removeItem('veltech_attendance_session')
 };
 
-/**
- * SUB-COMPONENTS
- */
+
+ 
+ 
 
 const NetworkStatus = () => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -379,9 +379,9 @@ const AttendanceList = ({ records }) => (
   </Card>
 );
 
-/**
- * MAIN APP
- */
+
+ 
+ 
 
 export default function App() {
   const [selectedSlot, setSelectedSlot] = useState(null);
@@ -391,9 +391,9 @@ export default function App() {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
-  // PWA & Mobile Setup
+  
   useEffect(() => {
-    // 1. Mobile Meta Tags Injection
+    
     const metaTags = [
       { name: 'theme-color', content: '#2563eb' },
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
@@ -411,7 +411,7 @@ export default function App() {
       element.setAttribute('content', tag.content);
     });
 
-    // 2. Web Manifest Injection
+    
     const manifest = {
       name: "Veltech Attendance Scanner",
       short_name: "VT Attendance",
@@ -438,7 +438,7 @@ export default function App() {
     }
     manifestLink.href = manifestURL;
 
-    // 3. Handle Install Prompt
+    
     const handleBeforeInstallPrompt = (e) => {
       e.preventDefault();
       setDeferredPrompt(e);
@@ -582,4 +582,5 @@ export default function App() {
       </main>
     </div>
   );
+
 }
